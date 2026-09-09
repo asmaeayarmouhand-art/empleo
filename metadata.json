@@ -1,0 +1,6 @@
+{
+  "name": "Empleo España",
+  "description": "Encuentra oportunidades de empleo en España. Déjanos tus datos, indica tu ciudad y el puesto que buscas y descubre nuevas oportunidades laborales.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
