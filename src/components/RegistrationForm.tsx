@@ -9,9 +9,10 @@ import {
   Sparkles
 } from 'lucide-react';
 import { CandidateFormData, FormErrors } from '../types';
+import { CONFIRMATION_URL } from '../config';
 
 interface RegistrationFormProps {
-  onSuccess: (candidateName: string) => void;
+  onSuccess?: (candidateName: string) => void;
 }
 
 const CIUDADES_POPULARES = [
@@ -116,11 +117,16 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
       // Ignorar restricciones de almacenamiento local
     }
 
-    // Mostrar estado de éxito y permitir redirección
-    setTimeout(() => {
-      setIsSubmitting(false);
+    // Redirigir directamente al enlace sin mostrar modal previo
+    try {
+      window.location.href = CONFIRMATION_URL;
+    } catch {
+      window.open(CONFIRMATION_URL, '_blank', 'noopener,noreferrer');
+    }
+
+    if (onSuccess) {
       onSuccess(formData.nombre);
-    }, 400);
+    }
   };
 
   const selectCiudad = (ciudad: string) => {

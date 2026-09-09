@@ -7,15 +7,12 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Benefits from './components/Benefits';
-import SuccessModal from './components/SuccessModal';
 import LegalModal from './components/LegalModal';
 import Footer from './components/Footer';
 import { ModalType } from './types';
 import { Shield } from 'lucide-react';
 
 export default function App() {
-  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
-  const [candidateName, setCandidateName] = useState('');
   const [activeLegalModal, setActiveLegalModal] = useState<ModalType>(null);
 
   // Take the visitor directly to the Formulario de Registro de Candidatos upon opening the page
@@ -41,11 +38,6 @@ export default function App() {
     }
   };
 
-  const handleFormSuccess = (name: string) => {
-    setCandidateName(name);
-    setIsSuccessOpen(true);
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 selection:bg-blue-900 selection:text-white">
       {/* 1. Header */}
@@ -54,7 +46,7 @@ export default function App() {
       {/* Main Content Area */}
       <main className="flex-1">
         {/* 2. Top Hero Section with Registration Form at the top */}
-        <Hero onFormSuccess={handleFormSuccess} />
+        <Hero />
 
         {/* 3. Benefits / trust section */}
         <Benefits />
@@ -91,13 +83,6 @@ export default function App() {
           </div>
         </section>
       </main>
-
-      {/* 6. Success State Modal */}
-      <SuccessModal 
-        isOpen={isSuccessOpen} 
-        onClose={() => setIsSuccessOpen(false)}
-        candidateName={candidateName}
-      />
 
       {/* Modales de Políticas Legales */}
       <LegalModal 

@@ -3,7 +3,7 @@ import heroImage from '../assets/images/empleo_profesionales_espana_178897805765
 import RegistrationForm from './RegistrationForm';
 
 interface HeroProps {
-  onFormSuccess: (candidateName: string) => void;
+  onFormSuccess?: (candidateName: string) => void;
 }
 
 export default function Hero({ onFormSuccess }: HeroProps) {
